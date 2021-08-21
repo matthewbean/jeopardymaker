@@ -1,24 +1,32 @@
-import logo from './logo.svg';
+
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css';
+
+import QuestionState from './context/QuestionState';
+import Title from './Compnents/Title.jsx';
+import Board from './Compnents/Board.jsx';
+import Answer from './Compnents/Answer';
+import Question from './Compnents/Question';
+import Editor from './Compnents/editor/Editor'
+import Upload from './Compnents/Upload';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <QuestionState>
+      <div className="App">
+      <Router>
+        
+        <Title />
+      <Switch>
+        <Route exact path = '/' component = {Board} />
+        <Route exact path='/question' component = {Question} />
+        <Route exact path='/answer' component = {Answer} />
+        <Route exact path='/edit' component = {Editor} />
+        <Route exact path='/upload' component = {Upload} />
+      </Switch>
+      </Router>
+      </div>
+    </QuestionState>
   );
 }
 
