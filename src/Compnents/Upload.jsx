@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link, useHistory  } from 'react-router-dom';
+import { Link, useNavigate  } from 'react-router-dom';
 
 import home from '../icons/home.svg';   
 
@@ -17,7 +17,7 @@ export default function Upload(props) {
     const [state, setstate] = useState(initialState);
 
 
-    const history = useHistory();
+    const navigate = useNavigate()
 
     const handleUpload = (e)=>{
         setstate({...state, file: e.target.files[0]})
@@ -30,7 +30,7 @@ export default function Upload(props) {
             let fileName = document.getElementById("upload").value
             if (fileName.substring(fileName.length-3, fileName.length) === "txt") {
                 uploadGame(evt.target.result);
-                history.push('/');
+                navigate('/');
             } else {
                 alert('please enter a valid file');
                 document.getElementById("upload").value = null;

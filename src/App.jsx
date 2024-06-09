@@ -1,5 +1,4 @@
-
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import './App.css';
 
 import QuestionState from './context/QuestionState';
@@ -11,23 +10,25 @@ import Editor from './Compnents/editor/Editor'
 import Upload from './Compnents/Upload';
 
 function App() {
+
+
   return (
     <QuestionState>
       <div className="App">
+        <Title />
       <Router>
         
-        <Title />
-      <Switch>
-        <Route exact path = '/' component = {Board} />
-        <Route exact path='/question' component = {Question} />
-        <Route exact path='/answer' component = {Answer} />
-        <Route exact path='/edit' component = {Editor} />
-        <Route exact path='/upload' component = {Upload} />
-      </Switch>
+      <Routes>
+        <Route exact path = '/' element = {<Board/>} />
+        <Route exact path='/question' element = {<Question />} />
+        <Route exact path='/answer' element = {<Answer />} />
+        <Route exact path='/edit' element = {<Editor />} />
+        <Route exact path='/upload' element = {<Upload />} />
+      </Routes>
       </Router>
       </div>
     </QuestionState>
   );
 }
 
-export default App;
+export default App
